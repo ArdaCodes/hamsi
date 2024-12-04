@@ -5,26 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Video Oynatma</title>
     <style>
-        /* Basit stil ekleyelim */
+        /* Video kapsayıcısının ekranı kaplaması */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
         .video-container {
-            cursor: pointer;
-            max-width: 100%;
-            max-height: 100%;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Video boyutunun ekranı tam kaplamasını sağlar */
         }
     </style>
 </head>
 <body>
 
-<!-- Video etiketi -->
-<video id="videoPlayer" class="video-container" width="600" height="400" onclick="playVideo()">
-    <source src="video.mp4" type="video/mp4">
-    Tarayıcınız video oynatmayı desteklemiyor.
-</video>
+<!-- Video kapsayıcı -->
+<div class="video-container" onclick="playVideo()">
+    <video id="videoPlayer" autoplay>
+        <source src="video.mp4" type="video/mp4">
+        Tarayıcınız video oynatmayı desteklemiyor.
+    </video>
+</div>
 
 <script>
     function playVideo() {
         var video = document.getElementById("videoPlayer");
-        // Eğer video duraklatılmışsa başlat, aksi takdirde duraklat
+        // Video duraklatılmışsa başlat, aksine duraklat
         if (video.paused) {
             video.play();
         } else {
