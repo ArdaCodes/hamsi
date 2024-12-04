@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Oynatma</title>
+    <style>
+        /* Basit stil ekleyelim */
+        .video-container {
+            cursor: pointer;
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Video etiketi -->
+<video id="videoPlayer" class="video-container" width="600" height="400" onclick="playVideo()">
+    <source src="video.mp4" type="video/mp4">
+    Tarayıcınız video oynatmayı desteklemiyor.
+</video>
+
+<script>
+    function playVideo() {
+        var video = document.getElementById("videoPlayer");
+        // Eğer video duraklatılmışsa başlat, aksi takdirde duraklat
+        if (video.paused) {
+            video.play();
+        } else {
+            video.pause();
+        }
+    }
+</script>
+
+</body>
+</html>
